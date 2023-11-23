@@ -1,0 +1,22 @@
+@import "../../styles//variables";
+
+.btn {
+  color: $btnColor;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.12;
+  background-color: $accent;
+  border-radius: 42px;
+  padding: 18px 44px;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+}
+
+.btn:hover {
+  color: $accent;
+  background-color: $btnColor;
+  cursor: pointer;
+}
+
+.signInBtn {
+  margin-top: 40px;
+}
