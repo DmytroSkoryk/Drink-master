@@ -14,7 +14,7 @@ const router = createBrowserRouter(
       element: <App />,
     },
   ],
-  { basename: import.meta.env.DEV ? "/" : "/draft/" }
+  { basename: import.meta.env.DEV ? "/" : "/Drink-master/" }
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
