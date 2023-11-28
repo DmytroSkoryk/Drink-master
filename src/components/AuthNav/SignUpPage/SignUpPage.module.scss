@@ -50,6 +50,11 @@
   margin-top: 28px;
 }
 
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   color: $accent;
   font-size: 17px;
@@ -61,6 +66,7 @@
   padding-top: 14px;
   padding-bottom: 15px;
   padding-left: 24px;
+  max-width: 400px;
 }
 
 .input:focus {

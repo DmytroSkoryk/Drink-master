@@ -1,7 +1,13 @@
 import UserRoutes from "./UserRoutes";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  return <UserRoutes />;
+  return (
+    <>
+      <Toaster />
+      <UserRoutes />
+    </>
+  );
 };
 
 export default App;
