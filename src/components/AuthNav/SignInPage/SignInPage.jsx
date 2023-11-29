@@ -1,64 +1,69 @@
-import React, { useState } from "react";
 import css from "./SignInPage.module.scss";
 import Button from "../../Button/Button";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInThank } from "../../../redux/Auth/operations";
+import { isUserAuthenticated } from "../../../redux/Auth/selectors";
+import { useEffect } from "react";
 
 const SignInPage = () => {
-  const [activeInput, setActiveInput] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
+  const isAuth = useSelector(isUserAuthenticated);
 
-  const handleInputFocus = (fieldName) => {
-    setActiveInput(fieldName);
-  };
+  const navigate = useNavigate();
 
-  const handleInputBlur = () => {
-    setActiveInput("");
-  };
-
-  const handleSelect = (event) => {
-    const { value } = event.target;
-    setSelectedValue(value);
-  };
-
-  const getInputClassName = (fieldName) => {
-    return `${css.input} ${activeInput === fieldName ? css.activeInput : ""} ${
-      selectedValue && selectedValue === fieldName ? css.selectedInput : ""
-    }`;
-  };
+  const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    console.log(values);
+    dispatch(SignInThank({ email: values.email, password: values.password }));
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/home");
+    }
+  }, [isAuth, navigate]);
 
   return (
     <div className={css.container}>
       <h1 className={css.title}>Sign In</h1>
-
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, values }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className={css.inputContainer}>
-              <Field
-                name="email"
-                component="input"
-                placeholder="Email"
-                className={getInputClassName("email")}
-                onFocus={() => handleInputFocus("email")}
-                onBlur={handleInputBlur}
-                onSelect={handleSelect}
-              />
-              <Field name="phone">
-                {() => (
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    className={getInputClassName("phone")}
-                    onFocus={() => handleInputFocus("phone")}
-                    onBlur={handleInputBlur}
-                    onSelect={handleSelect}
-                  />
+              <Field name="email">
+                {({ input, meta }) => (
+                  <div className={css.inputWrapper}>
+                    <input
+                      {...input}
+                      type="email"
+                      placeholder="Email"
+                      className={css.input}
+                    />
+                    {(meta.error || meta.submitError) && meta.touched && (
+                      <span className={css.notice}>
+                        {meta.error || meta.submitError}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </Field>
+              <Field name="password">
+                {({ input, meta }) => (
+                  <div className={css.inputWrapper}>
+                    <input
+                      {...input}
+                      type="password"
+                      placeholder="Password"
+                      className={css.input}
+                    />
+                    {(meta.error || meta.submitError) && meta.touched && (
+                      <span className={css.notice}>
+                        {meta.error || meta.submitError}
+                      </span>
+                    )}
+                  </div>
                 )}
               </Field>
             </div>

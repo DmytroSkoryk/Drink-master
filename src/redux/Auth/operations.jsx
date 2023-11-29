@@ -1,15 +1,20 @@
 import instance from "../instance";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getProfileThank = createAsyncThunk("auth/current", () =>
-  getProfile()
-);
+export const SignUpUser = async (body) => {
+  return await instance.post("auth/signup", body);
+};
+
+const setToken = (token) => {
+  instance.defaults.headers.common["Authorization"] = token;
+};
 
 export const SignInThank = createAsyncThunk(
   "auth/signin",
   async (body, { rejectWithValue, dispatch }) => {
     try {
-      const data = await SignIn(body);
+      const { data } = await instance.post("auth/signin", body);
+      setToken(`Bearer ${data.token}`);
       dispatch(getProfileThank());
       return data;
     } catch (error) {
@@ -18,23 +23,7 @@ export const SignInThank = createAsyncThunk(
   }
 );
 
-const SignUpUser = async (body) => {
-  return await instance.post("auth/signup", body);
-};
-
-export default SignUpUser;
-
-const setToken = (token) => {
-  instance.defaults.headers.common["Authorization"] = token;
-};
-
-export const SignIn = async (body) => {
-  const { data } = await instance.post("auth/signin", body);
-  if ("token" in data) setToken(`Bearer ${data.token}`);
-  return data;
-};
-
-export const getProfile = async () => {
+export const getProfileThank = createAsyncThunk("auth/current", async () => {
   const result = await instance.get("auth/current");
   return result.data;
-};
+});

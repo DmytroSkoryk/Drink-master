@@ -50,6 +50,11 @@
   margin-top: 28px;
 }
 
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   color: $accent;
   font-size: 17px;
@@ -61,11 +66,18 @@
   padding-top: 14px;
   padding-bottom: 15px;
   padding-left: 24px;
+  max-width: 400px;
 }
 
 .input:focus {
   outline: none;
   border: 1px solid rgba(243, 243, 243, 0.5);
+}
+
+.notice {
+  color: $accent;
+  text-align: center;
+  margin-top: 14px;
 }
 
 .btnContainer {

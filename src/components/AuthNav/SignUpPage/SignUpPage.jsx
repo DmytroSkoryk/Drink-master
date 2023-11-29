@@ -1,8 +1,9 @@
 import css from "./SignUpPage.module.scss";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import { Form, Field } from "react-final-form";
-import SignUpUser from "../../../redux/Auth/operations";
+import { SignUpUser } from "../../../redux/Auth/operations";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const SignUpPage = () => {
         password: values.password,
       });
       toast.success("Authorization is successful");
-      navigate("auth/signin");
+      navigate("/signin");
     } catch (error) {
       if (error.response.status === 409) {
         toast.error("Email already used");
@@ -50,18 +51,40 @@ const SignUpPage = () => {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className={css.inputContainer}>
-              <Field
-                name="name"
-                component="input"
-                placeholder="Name"
-                className={css.input}
-              />
-              <Field
-                name="email"
-                component="input"
-                placeholder="Email"
-                className={css.input}
-              />
+              <Field name="name">
+                {({ input, meta }) => (
+                  <div className={css.inputWrapper}>
+                    <input
+                      {...input}
+                      type="text"
+                      placeholder="Name"
+                      className={css.input}
+                    />
+                    {(meta.error || meta.submitError) && meta.touched && (
+                      <span className={css.notice}>
+                        {meta.error || meta.submitError}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </Field>
+              <Field name="email">
+                {({ input, meta }) => (
+                  <div className={css.inputWrapper}>
+                    <input
+                      {...input}
+                      type="email"
+                      placeholder="Email"
+                      className={css.input}
+                    />
+                    {(meta.error || meta.submitError) && meta.touched && (
+                      <span className={css.notice}>
+                        {meta.error || meta.submitError}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </Field>
               <Field name="password">
                 {({ input, meta }) => (
                   <div className={css.inputWrapper}>
@@ -72,7 +95,9 @@ const SignUpPage = () => {
                       className={css.input}
                     />
                     {(meta.error || meta.submitError) && meta.touched && (
-                      <span>{meta.error || meta.submitError}</span>
+                      <span className={css.notice}>
+                        {meta.error || meta.submitError}
+                      </span>
                     )}
                   </div>
                 )}
