@@ -8,11 +8,11 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 const UserRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Welcome />} />
+      <Route path="/welcome" element={<Welcome />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
       <Route
-        path="/home"
+        path="/"
         element={
           <PrivateRoute>
             <Home />

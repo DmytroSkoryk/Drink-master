@@ -7,9 +7,9 @@ import { SignUpUser } from "../../../redux/Auth/operations";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
   const onSubmit = async (values) => {
-    console.log(values);
-    const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const errors = {};
     if (!values.name) {
       errors.name = "Enter your name";
