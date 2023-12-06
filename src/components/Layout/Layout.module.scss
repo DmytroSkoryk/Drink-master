@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.headerContainer {
+  display: flex;
+}
+
+.logoContainer {
+  display: flex;
+}
+
+.siteName {
+  color: $accent;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.pages {
+  color: $accent;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+}
