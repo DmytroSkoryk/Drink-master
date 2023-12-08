@@ -1,21 +1,25 @@
 @import "../../styles/variables";
 
-.container {
-  width: 1440px;
+.headerWrapper {
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+  height: 84px;
+}
+
+.headerContainer {
+  width: 1240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 84px;
   padding-left: 100px;
   padding-right: 100px;
   margin: auto;
 }
 
-.headerContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 84px;
-}
-
 .logoContainer {
   display: flex;
+  gap: 14px;
+  align-items: center;
 }
 
 .siteName {
@@ -25,11 +29,26 @@
   line-height: 1.22;
 }
 
+.navContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
 .pages {
   color: $accent;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  padding: 8px 16px;
+  border-radius: 40px;
+}
+
+.userContainer {
+  display: flex;
+  gap: 14px;
+  align-items: center;
 }
 
 .userPhoto {
