@@ -7,16 +7,14 @@ body {
     url("../../public/BffullBlue.webp"), url("../../public/BffullGreen.webp"),
     url("../../public/BffullBlue.webp"), url("../../public/BffullBlue.webp"),
     url("../../public/BffullGreen.webp"), url("../../public/BffullBlue.webp");
-  background-position: top 119px left 42px, top 20px left -623px,
+  background-position: top 0 left 42px, top -400px left -700px,
     top 745px right -258px, top 456px right -290px, bottom -1430px left -600px,
     bottom -1451px left 237px, bottom -1592px right -171px;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
     no-repeat;
-  background-size: 387px 381px, 784px 849px, 430px 465px, 549px 543px,
+  background-size: 581px 572px, 1176px 1273px, 430px 465px, 549px 543px,
     784px 849px, 774px 762px, 784px 849px;
   background-color: rgb(7, 7, 8);
-  padding-left: 100px;
-  width: 1440px;
 }
 
 a {

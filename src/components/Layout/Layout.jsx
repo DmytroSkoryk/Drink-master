@@ -3,7 +3,7 @@ import css from "./Layout.module.scss";
 
 const Loyout = () => {
   return (
-    <div>
+    <div className={css.container}>
       <header className={css.headerContainer}>
         <NavLink to="/" className={css.logoContainer}>
           <svg width="28" height="28">
@@ -28,7 +28,16 @@ const Loyout = () => {
             Favorites
           </NavLink>
         </nav>
+        <div>
+          <img
+            src="../../../public/user.png"
+            alt="user"
+            className={css.userPhoto}
+          />
+          <div className={css.pages}>name</div>
+        </div>
       </header>
+
       <div>
         <Outlet />
       </div>
