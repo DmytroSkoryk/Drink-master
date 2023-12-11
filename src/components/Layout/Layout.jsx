@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import css from "./Layout.module.scss";
+import User from "../Header/User";
 
 const Loyout = () => {
   return (
@@ -14,30 +15,48 @@ const Loyout = () => {
           </NavLink>
 
           <nav className={css.navContainer}>
-            <NavLink to="/" className={css.pages}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? css.activePage : css.notActivePage
+              }
+            >
               Home
             </NavLink>
-            <NavLink to="/drinks" className={css.pages}>
+            <NavLink
+              to="/drinks"
+              className={({ isActive }) =>
+                isActive ? css.activePage : css.notActivePage
+              }
+            >
               Drinks
             </NavLink>
-            <NavLink to="/add" className={css.pages}>
+            <NavLink
+              to="/add"
+              className={({ isActive }) =>
+                isActive ? css.activePage : css.notActivePage
+              }
+            >
               Add recipe
             </NavLink>
-            <NavLink to="/my" className={css.pages}>
+            <NavLink
+              to="/my"
+              className={({ isActive }) =>
+                isActive ? css.activePage : css.notActivePage
+              }
+            >
               My recipes
             </NavLink>
-            <NavLink to="/favorites" className={css.pages}>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                isActive ? css.activePage : css.notActivePage
+              }
+            >
               Favorites
             </NavLink>
           </nav>
-          <div className={css.userContainer}>
-            <img
-              src="../../../public/user.png"
-              alt="user"
-              className={css.userPhoto}
-            />
-            <div className={css.pages}>name</div>
-          </div>
+          <User />
         </header>
       </div>
 

@@ -6,11 +6,15 @@ import { Form } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { SignInThank } from "../../../redux/Auth/operations";
 import { isUserAuthenticated } from "../../../redux/Auth/selectors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Input from "../Input/Input";
 import validate from "../validate/validate";
 
 const SignInPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const onClick = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
   const isAuth = useSelector(isUserAuthenticated);
 
   const navigate = useNavigate();
@@ -49,7 +53,13 @@ const SignInPage = () => {
           <form onSubmit={handleSubmit}>
             <div className={css.inputContainer}>
               <Input name="email" type="email" placeholder="Email" />
-              <Input name="password" type="password" placeholder="Password" />
+              <Input
+                name="password"
+                type={!showPassword ? "password" : "trxt"}
+                placeholder="Password"
+                onClick={onClick}
+                showPassword={showPassword}
+              />
             </div>
             <div className={css.btnContainer}>
               <Button type="submit" children="Sign In" variant="signInBtn" />
