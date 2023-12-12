@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import css from "./Layout.module.scss";
-import User from "../Header/User";
+import User from "../User/User";
 
 const Loyout = () => {
   return (
