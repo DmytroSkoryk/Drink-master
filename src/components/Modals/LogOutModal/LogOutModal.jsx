@@ -1,22 +1,22 @@
-import css from "./EditModal.module.scss";
+import css from "./LogOutModal.module.scss";
 import Button from "../../Button/Button";
 import { useEffect } from "react";
 
-const EditModal = ({ isShowEditModal, closeEditModal }) => {
+const LogOutModal = ({ isShowLogOutModal, closeLogOutModal }) => {
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
-      closeEditModal();
+      closeLogOutModal();
     }
   };
 
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
-      closeEditModal();
+      closeLogOutModal();
     }
   };
 
   useEffect(() => {
-    if (isShowEditModal) {
+    if (isShowLogOutModal) {
       document.addEventListener("keydown", handleKeyDown);
     } else {
       document.removeEventListener("keydown", handleKeyDown);
@@ -25,9 +25,9 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isShowEditModal, closeEditModal]);
+  }, [isShowLogOutModal, closeLogOutModal]);
 
-  if (!isShowEditModal) return null;
+  if (!isShowLogOutModal) return null;
 
   return (
     <div
@@ -59,4 +59,4 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
   );
 };
 
-export default EditModal;
+export default LogOutModal;

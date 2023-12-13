@@ -2,7 +2,12 @@ import css from "./Modal.module.scss";
 import Button from "../../Button/Button";
 import { useEffect } from "react";
 
-const UserModal = ({ isOpenUserModal, closeUserModal, openEditModal }) => {
+const UserModal = ({
+  isShowUserModal,
+  closeUserModal,
+  openEditModal,
+  openLogOutModal,
+}) => {
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
       closeUserModal();
@@ -16,7 +21,7 @@ const UserModal = ({ isOpenUserModal, closeUserModal, openEditModal }) => {
   };
 
   useEffect(() => {
-    if (isOpenUserModal) {
+    if (isShowUserModal) {
       document.addEventListener("keydown", handleKeyDown);
     } else {
       document.removeEventListener("keydown", handleKeyDown);
@@ -25,9 +30,9 @@ const UserModal = ({ isOpenUserModal, closeUserModal, openEditModal }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpenUserModal, closeUserModal]);
+  }, [isShowUserModal, closeUserModal]);
 
-  if (!isOpenUserModal) return null;
+  if (!isShowUserModal) return null;
 
   return (
     <div
@@ -48,7 +53,11 @@ const UserModal = ({ isOpenUserModal, closeUserModal, openEditModal }) => {
           </svg>
         </div>
         <div className={css.buttonContainer}>
-          <Button children="Log out" variant="logOutBtn" />
+          <Button
+            children="Log out"
+            variant="logOutBtn"
+            onClick={openLogOutModal}
+          />
         </div>
       </div>
     </div>

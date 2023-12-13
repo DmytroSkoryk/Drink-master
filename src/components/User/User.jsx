@@ -2,33 +2,45 @@ import css from "./User.module.scss";
 import { isUserProfile } from "../../redux/Auth/selectors";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-// import UserModal from "../Modals/UserModal/UserModal";
+import UserModal from "../Modals/UserModal/UserModal";
 import EditModal from "../Modals/EditModal/EditModal";
+import LogOutModal from "../Modals/LogOutModal/LogOutModal";
 
 const User = () => {
   const profile = useSelector(isUserProfile);
-  // const [showUserModal, setShowUserModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [isShowUserModal, setIsShowUserModal] = useState(false);
+  const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isShowLogOutModal, setIsShowLogOutModal] = useState(false);
 
-  // const openUserModal = () => {
-  //   setShowUserModal(true);
-  // };
+  const openUserModal = () => {
+    setIsShowUserModal(true);
+  };
 
-  // const closeUserModal = () => {
-  //   setShowUserModal(false);
-  // };
+  const closeUserModal = () => {
+    setIsShowUserModal(false);
+  };
 
   const openEditModal = () => {
-    setShowEditModal(true);
+    closeUserModal();
+    setIsShowEditModal(true);
   };
 
   const closeEditModal = () => {
-    setShowEditModal(false);
+    setIsShowEditModal(false);
+  };
+
+  const openLogOutModal = () => {
+    closeUserModal();
+    setIsShowLogOutModal(true);
+  };
+
+  const closeLogOutModal = () => {
+    setIsShowLogOutModal(false);
   };
 
   return (
     <div>
-      <div className={css.userContainer} onClick={openEditModal}>
+      <div className={css.userContainer} onClick={openUserModal}>
         <img
           src="../../../public/user.png"
           alt="user"
@@ -36,9 +48,20 @@ const User = () => {
         />
         <div className={css.userName}>{profile.name}</div>
       </div>
+
+      <UserModal
+        isShowUserModal={isShowUserModal}
+        closeUserModal={closeUserModal}
+        openEditModal={openEditModal}
+        openLogOutModal={openLogOutModal}
+      />
       <EditModal
-        isOpenEditModal={showEditModal}
+        isShowEditModal={isShowEditModal}
         closeEditModal={closeEditModal}
+      />
+      <LogOutModal
+        isShowLogOutModal={isShowLogOutModal}
+        closeLogOutModal={closeLogOutModal}
       />
     </div>
   );
