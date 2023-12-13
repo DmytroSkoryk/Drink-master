@@ -41,11 +41,7 @@ const User = () => {
   return (
     <div>
       <div className={css.userContainer} onClick={openUserModal}>
-        <img
-          src="../../../public/user.png"
-          alt="user"
-          className={css.userPhoto}
-        />
+        <img src="/public/user.png" alt="user" className={css.userPhoto} />
         <div className={css.userName}>{profile.name}</div>
       </div>
 

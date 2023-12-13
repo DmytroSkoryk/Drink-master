@@ -36,23 +36,22 @@ const LogOutModal = ({ isShowLogOutModal, closeLogOutModal }) => {
       onKeyDown={handleKeyDown}
     >
       <div className={css.modal}>
-        <div className={css.editContainer}>
-          <svg width="32" height="32" className={css.editModalClose}>
-            <use href="../../../public/icons.svg#close"></use>
-          </svg>
-          <div>
-            <img
-              src="../../../../public/user.png"
-              alt="User"
-              className={css.userPhoto}
-            />
-            <svg width="32" height="32" className={css.editImg}>
-              <use href="../../../public/icons.svg#add-photo"></use>
-            </svg>
-          </div>
-        </div>
+        <svg
+          width="32"
+          height="32"
+          className={css.editModalClose}
+          onClick={closeLogOutModal}
+        >
+          <use href="../../../public/icons.svg#close"></use>
+        </svg>
+        <p className={css.title}>Are you sure you want to log out?</p>
         <div className={css.buttonContainer}>
-          <Button children="Save changes" variant="saveChangesBtn" />
+          <Button children="Log out" variant="logOutCancelBtn" />
+          <Button
+            children="Cancel"
+            variant="logOutCancelBtn"
+            onClick={closeLogOutModal}
+          />
         </div>
       </div>
     </div>

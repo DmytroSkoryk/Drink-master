@@ -1,4 +1,4 @@
-import css from "./Modal.module.scss";
+import css from "./UserModal.module.scss";
 import Button from "../../Button/Button";
 import { useEffect } from "react";
 
@@ -49,7 +49,7 @@ const UserModal = ({
             className={css.editImg}
             onClick={openEditModal}
           >
-            <use href="../../../public/icons.svg#pencil"></use>
+            <use href="/public/icons.svg#pencil"></use>
           </svg>
         </div>
         <div className={css.buttonContainer}>

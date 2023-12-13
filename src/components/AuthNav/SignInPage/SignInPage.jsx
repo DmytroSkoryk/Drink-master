@@ -55,7 +55,7 @@ const SignInPage = () => {
               <Input name="email" type="email" placeholder="Email" />
               <Input
                 name="password"
-                type={!showPassword ? "password" : "trxt"}
+                type={!showPassword ? "password" : "text"}
                 placeholder="Password"
                 onClick={onClick}
                 showPassword={showPassword}

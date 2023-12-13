@@ -36,21 +36,22 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
       onKeyDown={handleKeyDown}
     >
       <div className={css.modal}>
-        <div className={css.editContainer}>
-          <svg width="32" height="32" className={css.editModalClose}>
-            <use href="../../../public/icons.svg#close"></use>
+        <svg
+          width="32"
+          height="32"
+          className={css.editModalClose}
+          onClick={closeEditModal}
+        >
+          <use href="/public/icons.svg#close"></use>
+        </svg>
+        <div>
+          <img src="/public/user.png" alt="User" className={css.userPhoto} />
+          <svg width="32" height="32" className={css.editImg}>
+            <use href="/public/icons.svg#add-photo"></use>
           </svg>
-          <div>
-            <img
-              src="../../../../public/user.png"
-              alt="User"
-              className={css.userPhoto}
-            />
-            <svg width="32" height="32" className={css.editImg}>
-              <use href="../../../public/icons.svg#add-photo"></use>
-            </svg>
-          </div>
         </div>
+
+        <input type="text" className={css.input} />
         <div className={css.buttonContainer}>
           <Button children="Save changes" variant="saveChangesBtn" />
         </div>
