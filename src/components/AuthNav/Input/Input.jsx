@@ -41,7 +41,7 @@ const Input = ({ type, placeholder, name, onClick, showPassword }) => {
                   className={css.imgShowPassword}
                   onClick={onClick}
                 >
-                  <use href="../../../public/icons.svg#eye-off"></use>
+                  <use href="icons.svg#eye-off"></use>
                 </svg>
               ) : (
                 <svg
@@ -50,7 +50,7 @@ const Input = ({ type, placeholder, name, onClick, showPassword }) => {
                   className={css.imgShowPassword}
                   onClick={onClick}
                 >
-                  <use href="../../../public/icons.svg#eye"></use>
+                  <use href="icons.svg#eye"></use>
                 </svg>
               )}
             </div>

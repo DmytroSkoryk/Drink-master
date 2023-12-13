@@ -42,12 +42,12 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
           className={css.editModalClose}
           onClick={closeEditModal}
         >
-          <use href="/public/icons.svg#close"></use>
+          <use href="icons.svg#close"></use>
         </svg>
         <div>
           <img src="user.png" alt="User" className={css.userPhoto} />
           <svg width="32" height="32" className={css.editImg}>
-            <use href="/public/icons.svg#add-photo"></use>
+            <use href="icons.svg#add-photo"></use>
           </svg>
         </div>
 

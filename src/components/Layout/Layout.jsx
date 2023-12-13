@@ -9,7 +9,7 @@ const Loyout = () => {
         <header className={css.headerContainer}>
           <NavLink to="/" className={css.logoContainer}>
             <svg width="28" height="28">
-              <use href="/../../public/icons.svg#logo"></use>
+              <use href="icons.svg#logo"></use>
             </svg>
             <p className={css.siteName}>Drink Master</p>
           </NavLink>

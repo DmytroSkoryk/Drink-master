@@ -49,7 +49,7 @@ const UserModal = ({
             className={css.editImg}
             onClick={openEditModal}
           >
-            <use href="/public/icons.svg#pencil"></use>
+            <use href="icons.svg#pencil"></use>
           </svg>
         </div>
         <div className={css.buttonContainer}>

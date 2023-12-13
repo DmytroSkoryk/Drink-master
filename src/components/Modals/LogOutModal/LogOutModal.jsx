@@ -42,7 +42,7 @@ const LogOutModal = ({ isShowLogOutModal, closeLogOutModal }) => {
           className={css.editModalClose}
           onClick={closeLogOutModal}
         >
-          <use href="../../../public/icons.svg#close"></use>
+          <use href="icons.svg#close"></use>
         </svg>
         <p className={css.title}>Are you sure you want to log out?</p>
         <div className={css.buttonContainer}>
