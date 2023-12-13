@@ -45,7 +45,7 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
           <use href="/public/icons.svg#close"></use>
         </svg>
         <div>
-          <img src="/public/user.png" alt="User" className={css.userPhoto} />
+          <img src="user.png" alt="User" className={css.userPhoto} />
           <svg width="32" height="32" className={css.editImg}>
             <use href="/public/icons.svg#add-photo"></use>
           </svg>
