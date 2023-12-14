@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import css from "./Layout.module.scss";
 import User from "../User/User";
-import { use } from "react-use";
 
 const Loyout = () => {
   return (
@@ -10,16 +9,8 @@ const Loyout = () => {
         <header className={css.headerContainer}>
           <NavLink to="/" className={css.logoContainer}>
             <svg width="28" height="28">
-              <use href="icons.svg#logo"></use>
+              <use href="../../../public/icons.svg#logo"></use>
             </svg>
-            {use(
-              "icons.svg#logo",
-              "editModalClose",
-              "32",
-              "32",
-              css.editModalClose,
-              { onClick: closeLogOutModal }
-            )}
             <p className={css.siteName}>Drink Master</p>
           </NavLink>
 
