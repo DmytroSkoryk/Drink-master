@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import css from "./Layout.module.scss";
 import User from "../User/User";
+import { SVG_RAW_URL } from "../constants";
 
 const Loyout = () => {
   return (
@@ -9,7 +10,7 @@ const Loyout = () => {
         <header className={css.headerContainer}>
           <NavLink to="/" className={css.logoContainer}>
             <svg width="28" height="28">
-              <use href="icons.svg#logo"></use>
+              <use href={`${SVG_RAW_URL}#logo`}></use>
             </svg>
             <p className={css.siteName}>Drink Master</p>
           </NavLink>
