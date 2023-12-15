@@ -2,7 +2,7 @@ import css from "./EditModal.module.scss";
 import Button from "../../Button/Button";
 import { useEffect } from "react";
 
-const EditModal = ({ isShowEditModal, closeEditModal }) => {
+const EditModal = ({ isShowEditModal, closeEditModal, profile }) => {
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
       closeEditModal();
@@ -45,7 +45,7 @@ const EditModal = ({ isShowEditModal, closeEditModal }) => {
           <use href="icons.svg#close"></use>
         </svg>
         <div>
-          <img src="user.png" alt="User" className={css.userPhoto} />
+          <img src={profile.avatarURL} alt="User" className={css.userPhoto} />
           <svg width="32" height="32" className={css.editImg}>
             <use href="icons.svg#add-photo"></use>
           </svg>

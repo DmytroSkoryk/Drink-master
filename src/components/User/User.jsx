@@ -40,10 +40,14 @@ const User = () => {
 
   return (
     <div>
-      <div className={css.userContainer} onClick={openUserModal}>
-        <img src="user.png" alt="user" className={css.userPhoto} />
-        <div className={css.userName}>{profile.name}</div>
-      </div>
+      {profile ? (
+        <div className={css.userContainer} onClick={openUserModal}>
+          <img src={profile.avatarURL} alt="user" className={css.userPhoto} />
+          <div className={css.userName}>{profile.name}</div>
+        </div>
+      ) : (
+        ""
+      )}
 
       <UserModal
         isShowUserModal={isShowUserModal}
@@ -54,6 +58,7 @@ const User = () => {
       <EditModal
         isShowEditModal={isShowEditModal}
         closeEditModal={closeEditModal}
+        profile={profile}
       />
       <LogOutModal
         isShowLogOutModal={isShowLogOutModal}

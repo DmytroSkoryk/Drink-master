@@ -41,14 +41,9 @@ const UserModal = ({
       onKeyDown={handleKeyDown}
     >
       <div className={css.modal}>
-        <div className={css.editContainer}>
+        <div className={css.editContainer} onClick={openEditModal}>
           <p className={css.text}>Edit profile</p>
-          <svg
-            width="14"
-            height="14"
-            className={css.editImg}
-            onClick={openEditModal}
-          >
+          <svg width="14" height="14" className={css.editImg}>
             <use href="icons.svg#pencil"></use>
           </svg>
         </div>

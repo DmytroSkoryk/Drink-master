@@ -10,6 +10,7 @@ const setToken = (token) => {
 };
 export const getProfileThank = createAsyncThunk("auth/current", async () => {
   const result = await instance.get("auth/current");
+
   return result.data;
 });
 

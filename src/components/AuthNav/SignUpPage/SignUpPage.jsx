@@ -51,7 +51,7 @@ const SignUpPage = () => {
 
               <Input
                 name="password"
-                type={!showPassword ? "password" : "trxt"}
+                type={!showPassword ? "password" : "text"}
                 placeholder="Password"
                 onClick={onClick}
                 showPassword={showPassword}
