@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignInThank, getProfileThank } from "./operations";
+import { SignInThank, getProfileThank, updateUser } from "./operations";
 
 const initialState = {
   token: "",
@@ -28,6 +28,15 @@ const handleFulfilledProfile = (state, { payload }) => {
   state.profile = payload;
 };
 
+const handleFulfilledUpdateUser = (state, action) => {
+  try {
+    state.isLoading = false;
+    state.profile = action.payload?.updatedUser?.profile;
+  } catch (error) {
+    console.error("Error updating user:", error);
+  }
+};
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -35,6 +44,7 @@ const authSlice = createSlice({
     builder
       .addCase(SignInThank.fulfilled, handleFulfilled)
       .addCase(getProfileThank.fulfilled, handleFulfilledProfile)
+      .addCase(updateUser.fulfilled, handleFulfilledUpdateUser)
       .addMatcher(({ type }) => type.endsWith("/pending"), handlePending)
       .addMatcher(({ type }) => type.endsWith("/rejected"), handleRejected);
   },

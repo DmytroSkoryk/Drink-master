@@ -8,11 +8,6 @@ export const SignUpUser = async (body) => {
 const setToken = (token) => {
   instance.defaults.headers.common["Authorization"] = token;
 };
-export const getProfileThank = createAsyncThunk("auth/current", async () => {
-  const result = await instance.get("auth/current");
-
-  return result.data;
-});
 
 export const SignInThank = createAsyncThunk(
   "auth/signin",
@@ -27,3 +22,14 @@ export const SignInThank = createAsyncThunk(
     }
   }
 );
+
+export const getProfileThank = createAsyncThunk("auth/current", async () => {
+  const result = await instance.get("auth/current");
+
+  return result.data;
+});
+
+export const updateUser = createAsyncThunk("auth/update", async (userData) => {
+  const result = await instance.patch("auth/update", userData);
+  return result.data;
+});

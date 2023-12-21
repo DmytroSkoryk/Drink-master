@@ -1,13 +1,17 @@
 import css from "./User.module.scss";
 import { isUserProfile } from "../../redux/Auth/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import UserModal from "../Modals/UserModal/UserModal";
 import EditModal from "../Modals/EditModal/EditModal";
 import LogOutModal from "../Modals/LogOutModal/LogOutModal";
+import { updateUser } from "../../redux/Auth/operations";
+import { getProfileThank } from "../../redux/Auth/operations";
 
 const User = () => {
   const profile = useSelector(isUserProfile);
+  const dispatch = useDispatch();
+
   const [isShowUserModal, setIsShowUserModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isShowLogOutModal, setIsShowLogOutModal] = useState(false);
@@ -38,11 +42,25 @@ const User = () => {
     setIsShowLogOutModal(false);
   };
 
+  const onUpdateUser = async (data) => {
+    try {
+      await dispatch(updateUser(data));
+      closeEditModal();
+      await dispatch(getProfileThank());
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+
   return (
     <div>
       {profile ? (
         <div className={css.userContainer} onClick={openUserModal}>
-          <img src={profile.avatarURL} alt="user" className={css.userPhoto} />
+          <img
+            src={profile?.avatarURL || ""}
+            alt="user"
+            className={css.userPhoto}
+          />
           <div className={css.userName}>{profile.name}</div>
         </div>
       ) : (
@@ -59,6 +77,7 @@ const User = () => {
         isShowEditModal={isShowEditModal}
         closeEditModal={closeEditModal}
         profile={profile}
+        onUpdateUser={onUpdateUser}
       />
       <LogOutModal
         isShowLogOutModal={isShowLogOutModal}

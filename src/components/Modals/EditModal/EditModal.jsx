@@ -1,8 +1,15 @@
 import css from "./EditModal.module.scss";
 import Button from "../../Button/Button";
 import { useEffect } from "react";
+import Input from "../../AuthNav/Input/Input";
+import { Form } from "react-final-form";
 
-const EditModal = ({ isShowEditModal, closeEditModal, profile }) => {
+const EditModal = ({
+  isShowEditModal,
+  closeEditModal,
+  profile,
+  onUpdateUser,
+}) => {
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
       closeEditModal();
@@ -29,6 +36,10 @@ const EditModal = ({ isShowEditModal, closeEditModal, profile }) => {
 
   if (!isShowEditModal) return null;
 
+  const onSubmit = (values) => {
+    onUpdateUser({ name: values.name, ...values });
+  };
+
   return (
     <div
       className={css.modalOverlay}
@@ -44,17 +55,36 @@ const EditModal = ({ isShowEditModal, closeEditModal, profile }) => {
         >
           <use href="icons.svg#close"></use>
         </svg>
-        <div>
-          <img src={profile.avatarURL} alt="User" className={css.userPhoto} />
-          <svg width="32" height="32" className={css.editImg}>
-            <use href="icons.svg#add-photo"></use>
-          </svg>
-        </div>
 
-        <input type="text" className={css.input} />
-        <div className={css.buttonContainer}>
-          <Button children="Save changes" variant="saveChangesBtn" />
-        </div>
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <div>
+                <div className={css.userAvatarContainer}>
+                  <img
+                    src={profile?.avatarURL || ""}
+                    alt="User"
+                    className={css.userPhoto}
+                  />
+                </div>
+                <svg width="32" height="32" className={css.editImg}>
+                  <use href="icons.svg#add-photo"></use>
+                </svg>
+                <div className={css.inputContainer}>
+                  <Input name="name" type="text" placeholder="Name" />
+                </div>
+              </div>
+              <div className={css.btnContainer}>
+                <Button
+                  type="submit"
+                  children="Save changes"
+                  variant="saveChangesBtn"
+                />
+              </div>
+            </form>
+          )}
+        />
       </div>
     </div>
   );
