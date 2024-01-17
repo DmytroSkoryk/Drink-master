@@ -40,6 +40,17 @@ const EditModal = ({
     onUpdateUser({ name: values.name, ...values });
   };
 
+  const handleFileChange = (e) => {
+    const fileInput = document.getElementById("fileInput");
+    const userFoto = document.getElementById("userPhoto");
+
+    const file = e.target.files[0];
+
+    if (file) {
+      userFoto.src = URL.createObjectURL(file);
+    }
+  };
+
   return (
     <div
       className={css.modalOverlay}
@@ -63,14 +74,24 @@ const EditModal = ({
               <div>
                 <div className={css.userAvatarContainer}>
                   <img
+                    id="userPhoto"
                     src={profile?.avatarURL || ""}
                     alt="User"
                     className={css.userPhoto}
                   />
                 </div>
-                <svg width="32" height="32" className={css.editImg}>
-                  <use href="icons.svg#add-photo"></use>
-                </svg>
+                <label htmlFor="fileInput">
+                  <svg width="32" height="32" className={css.editImg}>
+                    <use href="icons.svg#add-photo"></use>
+                  </svg>
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="fileInput"
+                  onChange={handleFileChange}
+                  style={{ display: "none" }}
+                />
                 <div className={css.inputContainer}>
                   <Input name="name" type="text" placeholder="Name" />
                 </div>
